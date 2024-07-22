@@ -2,17 +2,26 @@ from device import Device, Light, Thermostat, SecuritySystem, AirConditioner, Do
 
 class SmartHome:
     """
-    Classe para representar a casa inteligente.
+    Classe para representar a casa inteligente com o padrão Singleton.
     """
+    _instance = None
+    
+    def __new__(cls, *args, **kwargs):
+        if not cls._instance:
+            cls._instance = super(SmartHome, cls).__new__(cls)
+        return cls._instance
+
     def __init__(self, max_devices=10):
         """
         Inicializa a casa inteligente com um limite de dispositivos.
 
         :param max_devices: Número máximo de dispositivos permitidos.
         """
-        self.devices = {}
-        self.device_count = 0
-        self.max_devices = max_devices
+        if not hasattr(self, 'initialized'):
+            self.devices = {}
+            self.device_count = 0
+            self.max_devices = max_devices
+            self.initialized = True
 
     def add_device(self, name: str, device: Device):
         """

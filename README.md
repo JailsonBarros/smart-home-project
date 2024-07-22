@@ -39,7 +39,7 @@ The Smart Home System lets you manage multiple smart devices in your home, inclu
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/JailsonBarros/smart-home-project.git
+   git clone https://github.com/JailsonBarros/smart-home-project
    cd smart-home-system
    ```
 
